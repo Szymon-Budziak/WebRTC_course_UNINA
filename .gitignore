@@ -33,6 +33,8 @@
 *.app
 CMakeLists.txt
 cmake-build-debug/
+counter
+print_input
 
 # Java
 # Compiled class file
