@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>unina.webrtc.spring</groupId>
-    <artifactId>WebRTC</artifactId>
+    <artifactId>Spring_Boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>WebRTC</name>
-    <description>WebRTC</description>
+    <name>Spring_Boot</name>
+    <description>Spring_Boot</description>
     <properties>
         <java.version>11</java.version>
     </properties>
