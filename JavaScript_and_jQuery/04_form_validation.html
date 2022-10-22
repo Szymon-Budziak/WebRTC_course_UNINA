@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form validation</title>
+    <script>
+        function checkData() {
+            var correct = true;
+            if (document.MyForm.surname.value === "") {
+                correct = false;
+                alert("Insert your last name!");
+            }
+            if (document.MyForm.name.value === "") {
+                correct = false;
+                alert("Insert your first name!");
+            }
+            if (document.MyForm.email.value === "") {
+                correct = false;
+                alert("Insert your e-mail address!");
+            }
+            if ((document.MyForm.email.value.indexOf("@") === -1) && (document.MyForm.email.value !== "")) {
+                correct = false;
+                alert("E-mail is not valid!");
+            }
+            return correct;
+        }
+    </script>
+</head>
+<body onsubmit="return checkData()">
+<h1>WebRTC class</h1>
+<form name="MyForm">
+    <select name="title" size="1">
+        <option selected> Mr.</option>
+        <option>Mrs.</option>
+        <option>Dr.</option>
+        <option>Prof.</option>
+        <option>None of the above</option>
+    </select>
+
+    <p>Last name: <input type="text" name="surname" size="30"></p>
+    <p>First name: <input type="text" name="name" size="30"></p>
+    <p>E-mail: <input type="text" name="email" size="30"></p>
+
+    <p>Age:
+        <input type="radio" name="age" value="a">0-17
+        <input type="radio" name="age" value="b">18-26
+        <input type="radio" name="age" value="c">27-35
+        <input type="radio" name="age" value="d">>35
+    </p>
+
+    <p>Skills:
+        <input type="checkbox" name="skill" value="Linux">GNU/Linux
+        <input type="checkbox" name="skill" value="Windows">Windows
+        <input type="checkbox" name="skill" value="Office">Office
+        <input type="checkbox" name="skill" value="Java">Java
+    </p>
+
+    <p>
+        <input type="submit" value="Submit data">
+        <input type="reset" name="reset" value="Reset data">
+    </p>
+</form>
+</body>
+</html>

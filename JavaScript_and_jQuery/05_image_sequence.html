@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time-based image sequence</title>
+    <script>
+        var index = 1;
+        var numpics = 6;
+        var delay = 2500;
+        var pics = new Array(numpics);
+        pics[1] = "images/1.jpg";
+        pics[2] = "images/2.jpg";
+        pics[3] = "images/3.jpg";
+        pics[4] = "images/4.jpg";
+        pics[5] = "images/5.jpg";
+        pics[6] = "images/6.jpg";
+
+        function nextImage() {
+            if (index < numpics) {
+                index++;
+            } else {
+                index = 1;
+            }
+            document.picture.src = pics[index];
+            setTimeout("nextImage()", delay);
+        }
+    </script>
+</head>
+<body>
+<h1>WebRTC class</h1>
+<img src="#" name="picture">
+<script>
+    document.picture.src = pics[1];
+    setTimeout("nextImage()", delay);
+    // setInterval("nextImage()", delay);
+    // setInterval works when lines 25 and 34 are commented because this is a different function
+</script>
+</body>
+</html>
