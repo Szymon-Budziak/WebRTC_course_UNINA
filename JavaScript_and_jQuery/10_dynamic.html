@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic toggle</title>
+    <script type="text/javascript">
+        var enablePersist = "on"; // Enable saving state of content structure using session cookies? (on/off)
+        var collapsePrevious = "no"; // Collapse previously open content when opening present? (yes/no)
+
+        var contractSymbol = "- "; // HTML for contract symbol. For image, use: <img src="whatever.gif">
+        var expandSymbol = "+ "; // HTML for expand symbol.
+
+        if (document.getElementById) {
+            document.write('<style type="text/css">');
+            document.write('.switchcontent{display.none;}');
+            document.write('</style>');
+        }
+
+        function getElementByClass(rootObj, className) {
+            var temporary = new Array();
+            var idx = 0;
+            var rootLength = rootObj.length;
+            for (i = 0; i < rootLength; i++) {
+                if (rootObj[i].className == className)
+                    temporary[idx++] = rootObj[i];
+            }
+            return temporary;
+        }
+
+        function sweepToggle(ec) {
+            var state = (ec == "expand") ? "block" : "none";
+            var idx = 0;
+            while (collect[idx]) {
+                collect[idx].style.display = state;
+                idx++;
+            }
+            return reviewStatus();
+        }
+
+        function contractContent(omit) {
+            var idx = 0;
+            while (collect[idx]) {
+                if (collect[idx].id != omit)
+                    collect[idx].style.display = "none";
+                idx++;
+            }
+        }
+
+        function expandContent(currObj, cid) {
+            var spanTags = currObj.getElementsByTagName("span");
+            var showStateObj = getElementByClass(spanTags, "showstate");
+            if (collect.length > 0) {
+                if (collapsePrevious === "yes")
+                    contractContent(cid);
+                document.getElementById(cid).style.display = (document.getElementById(cid).style.display != "block") ? "block" : "none";
+                if (showStateObj.length > 0) {
+                    if (collapsePrevious === "no")
+                        showStateObj[0].innerHTML = (document.getElementById(cid).style.display == "block") ? contractSymbol : expandSymbol;
+                    else
+                        reviewStatus();
+                }
+            }
+        }
+
+        function reviewContent() {
+            contractContent("omitnothing");
+            sellectedItem = getSelectedItem();
+            selectedComponents = selectedItem.split("|");
+            for (i = 0; i < selectedComponents.length - 1; i++) {
+                document.getElementById(selectedComponents[i]).style.display = "block";
+            }
+        }
+
+        function reviewStatus() {
+            var idx = 0;
+            while (stateCollect[idx]) {
+                if (collect[idx].style.display === "block")
+                    stateCollect[idx].innerHTML = contractSymbol;
+                else
+                    stateCollect[idx].innerHTML = expandSymbol;
+                idx++;
+            }
+        }
+
+        function getCookie(name) {
+            var search = name + "=";
+            var returnValue = "";
+            if (document.cookie.length > 0) {
+                offset = document.cookie.indexOf(search);
+                if (offset != -1) {
+                    offset += search.length;
+                    end = document.cookie.indexOf(";", offset);
+                    if (end === -1)
+                        end = document.cookie.length;
+                    returnValue = unescape(document.cookie.substring(offset, end));
+                }
+            }
+            return returnValue;
+        }
+
+        function getSelectedItem() {
+            if (getCookie(window.location.pathname) != "") {
+                selectedItem = getCookie(window.location.pathname);
+                return selectedItem;
+            } else
+                return "";
+        }
+
+        function saveSwitchState() {
+            var idx = 0;
+            var selectedItem = "";
+            while (collect[idx]) {
+                if (collect[idx].style.display === "block")
+                    selectedItem += collect[idx].id + "|";
+                idx++;
+            }
+            document.cookie = window.location.pathname + "=" + selectedItem;
+        }
+
+        function doOnload() {
+            uniqueIdn = window.location.pathname + "fifirsttimeloadrs";
+            var allTags = document.all ? document.all : document.getElementsByTagName("*");
+            collect = getElementByClass(allTags, "switchcontent");
+            stateCollect = getElementByClass(allTags, "showstate");
+            if (enablePersist === "on" && collect.length > 0) {
+                document.cookie = (getCookie(uniqueIdn) === "") ? uniqueIdn + "=1" : uniqueIdn + "=0";
+                firstTimeLoad = (getCookie(uniqueIdn) === 1) ? 1 : 0; // check if this is 1st page load
+                if (!firstTimeLoad)
+                    reviewContent();
+            }
+            if (collect.length > 0 && stateCollect.length > 0) {
+                reviewStatus();
+            }
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", doOnload, false);
+        else if (window.attachEvent)
+            window.attachEvent("onload", doOnload);
+        else if (document.getElementById)
+            window.onload = doOnload;
+        if (enablePersist === "on" && document.getElementById)
+            window.onunload = saveSwitchState;
+    </script>
+</head>
+<body>
+<div align="center">
+    <div>
+        <a href="javascript:sweepToggle('contract')">Contact everything</a> |
+        <a href="javascript:sweepToggle('expand')">Expand everything</a>
+    </div>
+
+    <h3 onclick="expandContent(this, 'sc1')" style="cursor:hand; cursor:pointer">
+        <span class="showstate"></span>Telemetic Applications
+    </h3>
+
+    <div id="sc1" class="switchcontent">
+        The course aims to provide basic theoretical and methodological notions for the design and development of
+        telematic applications, with particular reference to web-based systems and distributed multimedia applications.
+        The telematic applications will be studied both from the point of view of the software architecture and from the
+        point of view of the protocols that define the communication modalities.
+    </div>
+
+    <h3 onclick="expandContent(this, 'sc2')" style="cursor:hand; cursor:pointer">
+        <span class="showstate"></span>Electronic Calculators I
+    </h3>
+
+    <div id="sc2" class="switchcontent">
+        The course aims to provide basic knowledge relating to: 1 - Architecture of electronic computers (components of
+        a computer and their interconnections), 2 - Processor language (processor instructions and programming in
+        assembly language).
+    </div>
+</div>
+</body>
+</html>

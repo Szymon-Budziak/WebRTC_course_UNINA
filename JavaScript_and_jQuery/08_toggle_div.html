@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toggle div example</title>
+    <style type="text/css">
+        #main {
+            width: 500px;
+            height: 20px;
+            background: lightblue;
+        }
+
+        #hidden {
+            width: 300px;
+            height: 20px;
+            background: lightgrey;
+            display: none;
+        }
+    </style>
+
+    <script>
+        function toggle(id) {
+            var state = document.getElementById(id).style.display;
+            if (state == "block") {
+                document.getElementById(id).style.display = "none";
+            } else {
+                document.getElementById(id).style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>WebRTC class</h1>
+<div id="main">
+    This element is hidden.
+    <a href="#" onclick="toggle('hidden');">Toggle Div</a>
+</div>
+<div id="hidden">This one is hidden!</div>
+</body>
+</html>

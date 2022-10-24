@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A user function with a parameter</title>
+    <script>
+        function openAndCenterWindow(url) {
+            var theWindow = window.open(url, 'the_window', 'height=300,width=300');
+            var screenHeight = window.screen.availHeight;
+            var screenWidth = window.screen.availWidth;
+            var leftPoint = parseInt(screenWidth / 2) - 200;
+            var topPoint = parseInt(screenHeight / 2) - 150;
+            theWindow.moveTo(leftPoint, topPoint);
+            theWindow.focus();
+        }
+    </script>
+</head>
+<body>
+<h1>WebRTC class</h1>
+<p>Click me to open a small, centered window ...</p>
+<a href="#" onclick="openAndCenterWindow('images/7.jpg'); return false;">and see something nice</a>
+</body>
+</html>
