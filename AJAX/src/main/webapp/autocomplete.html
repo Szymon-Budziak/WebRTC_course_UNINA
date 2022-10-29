@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AJAX examples: Autocomplete</title>
+
+    <script language="javascript" type="text/javascript">
+        function newXMLHttpRequest() {
+            var request = null;
+            var browser = navigator.userAgent.toUpperCase();
+            if (typeof (XMLHttpRequest) === "function" || typeof (XMLHttpRequest) === "object")
+                request = new XMLHttpRequest();
+            else if (window.ActiveXObject && browser.indexOf("MSIE 4") < 0) {
+                if (browser.indexOf("MSIE 5") < 0)
+                    request = new ActiveXObject("Msxml2.XMLHTTP");
+                else
+                    request = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return request;
+        }
+
+        function getSuggestion() {
+            var research = document.getElementById("text");
+            if (research.value === "")
+                removeSuggestion();
+            else {
+                var reg = newXMLHttpRequest();
+                reg.onreadystatechange = function () {
+                    if (reg.readyState === 4) {
+                        if (reg.status === 200) {
+                            manageResponse();
+                        } else if (reg.status === 204)
+                            removeSuggestion();
+                    }
+                };
+                reg.open("POST", "AutoComplete", true);
+                reg.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                var params = "id=" + escape(research.value);
+                reg.send(params);
+            }
+        }
+
+        function removeSuggestion() {
+            var tips = document.getElementById("tips");
+            while (tips.hasChildNodes())
+                tips.removeChild(tips.firstChild);
+        }
+
+        function manageResponse(responseXML) {
+            removeSuggestion();
+            var suggestion = document.getElementById("suggestion");
+            if (responseXML.getElementsByTagName("suggestion").length > 0) {
+                var response = responseXML.getElementsByTagName("response")[0];
+                if (response.childNodes.length > 0) {
+                    for (var loop = 0; loop < response.childNodes.length; loop++) {
+                        var item = response.childNodes[loop].childNodes[0].nodeValue;
+                        var row = document.createElement("tr");
+                        var td = document.createElement("td");
+                        td.appendChild(document.createTextNode(item));
+                        td.setAttribute("onmouseover", "mouseHint(this, 1);");
+                        td.setAttribute("onmouseout", "mouseHint(this, 0);");
+                        td.setAttribute("onclick", "clickHint(this);");
+                        row.appendChild(td);
+                        suggestion.appendChild(row);
+                    }
+                }
+            }
+        }
+
+        function mouseHint(item, select) {
+            if (select === 1)
+                item.setAttribute("style", "background-color:yellow");
+            else
+                item.setAttribute("style", "background-color:white");
+        }
+
+        function clickHint(item) {
+            removeSuggestion();
+            var text = document.getElementById("text");
+            text.value = item.childNodes[0].nodeValue;
+        }
+    </script>
+</head>
+<body>
+<h1>Telematics Applications Course:</h1>
+
+<form method="get" action="#">
+    <table>
+        <tbody>
+        <tr>
+            <td>Example:</td>
+            <td><input id="text" type="text" onkeyup="getSuggestion();"></td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tbody id="tips"></tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

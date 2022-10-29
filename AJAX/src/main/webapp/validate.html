@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AJAX examples: Validate</title>
+    <script language="javascript" type="text/javascript">
+        function validateInput() {
+            var research = document.getElementById("text");
+            if (research.value !== "") {
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function () {
+                    if (req.readyState === 4) {
+                        if (req.status === 200)
+                            manageResponse(req.responseXML);
+                    }
+                };
+                // req.open("GET", "Validate?id=" + escape(ricerca.value), true);
+                // req.send(null);
+                req.open("POST", "Validate", true);
+                req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                var params = "id=" + escape(research.value);
+                req.send(params);
+            }
+        }
+
+        function manageResponse(responseXML) {
+            if (responseXML.getElementsByTagName("response").length > 0) {
+                var response = responseXML.getElementsByTagName("response")[0];
+                var output = document.getElementById("result");
+                output.innerHTML = "";
+                if (response.childNodes[0].nodeValue === "valid") {
+                    output.setAttribute("style", "color:green");
+                    output.appendChild(document.createTextNode("exists"));
+                } else {
+                    output.setAttribute("style", "color:red");
+                    output.appendChild(document.createTextNode("does not exist"))
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<form method="get" action="#">
+    <table>
+        <tbody>
+        <tr>
+            <td>Example:</td>
+            <td><input id="text" type="text" onkeyup="validateInput();"></td>
+            <td id="result"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AJAX examples: Weather (Fetch API)</title>
+    <script language="javascript" type="text/javascript">
+        async function fetchWeather() {
+            let cityName = document.getElementById("cityName").value;
+            console.log("cityName: " + cityName);
+
+            let response = await fetch("WeatherJquery", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                },
+                body: "cityName=" + cityName
+            });
+            let result = await response.text();
+            alert(result);
+            document.getElementById("weatherReport").innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+<form method="post">
+    Example:
+    <input id="cityName" name="cityName" size="30" type="text">
+    <input id="getWeatherReport" name="getWeatherReport" type="button" onclick="fetchWeather();" value="Get Weather">
+</form>
+
+<blockquote>
+    <div id="weatherReport"></div>
+</blockquote>
+
+</body>
+</html>

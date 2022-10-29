@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AJAX examples: Date</title>
+    <script language="javascript" type="text/javascript">
+        months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ]
+
+        function getDate() {
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function () {
+                if (req.readyState === 4) {
+                    if (req.status === 200) {
+                        alert(req.responseText);
+                        manageResponse(req.responseXML);
+                    }
+                }
+            };
+            req.open("GET", "ServerDate", true);
+            req.send(null);
+            return false;
+        }
+
+        function manageResponse(responseXML) {
+            var second = responseXML.getElementsByTagName("second")[0];
+            var minute = responseXML.getElementsByTagName("minute")[0];
+            var hour = responseXML.getElementsByTagName("hour")[0];
+            var day = responseXML.getElementsByTagName("day")[0];
+            var month = responseXML.getElementsByTagName("month")[0];
+            var monthName = months[parseInt(month.childNodes[0].nodeValue)]
+            var year = responseXML.getElementsByTagName("year")[0];
+            var date = "At the server it is " + hour.childNodes[0].nodeValue + ":" + minute.childNodes[0].nodeValue + ":" + second.childNodes[0].nodeValue +
+                " of " + day.childNodes[0].nodeValue + " " + monthName + " " + year.childNodes[0].nodeValue;
+            var output = document.getElementById("date");
+            output.innerHTML = date;
+        }
+    </script>
+</head>
+<body>
+<p>Example: <a href="#" onclick="return getDate();">Update date</a></p>
+<p id="date">Not specified</p>
+</body>
+</html>
