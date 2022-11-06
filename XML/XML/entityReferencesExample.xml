@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOCUMENT>
+    <GREETING>
+        This text is inside the &lt;GREETING&gt; element <!--&lt; means < and &gt; means >-->
+    </GREETING>
+    <MESSAGE>
+        &quot;This part of the message is double quoted...&quot; <!--&quot; means "-->
+        &apos;…this is single quoted...&apos; <!--&apos; means '-->
+        ...and this contains an ampersand: &amp; <!--&amp; means &-->
+    </MESSAGE>
+</DOCUMENT>

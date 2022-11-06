@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE BOOK [
+        <!ELEMENT p (#PCDATA)>
+        <!ELEMENT BOOK (OPENER, SUBTITLE?, INTRODUCTION?,(SECTION | PART)+)>
+        <!ELEMENT OPENER (TITLE_TEXT)*>
+        <!ELEMENT TITLE_TEXT (#PCDATA)>
+        <!ELEMENT SUBTITLE (#PCDATA)>
+        <!ELEMENT INTRODUCTION (HEADER, p+)+>
+        <!ELEMENT PART (HEADER, CHAPTER+)>
+        <!ELEMENT SECTION (HEADER, p+)>
+        <!ELEMENT HEADER (#PCDATA)>
+        <!ELEMENT CHAPTER (CHAPTER_NUMBER, CHAPTER_TEXT)>
+        <!ELEMENT CHAPTER_NUMBER (#PCDATA)>
+        <!ELEMENT CHAPTER_TEXT ( p)+>
+        ]>
+<BOOK>
+    <OPENER>
+        <TITLE_TEXT>
+            Inside XML
+        </TITLE_TEXT>
+    </OPENER>
+    <PART>
+        <HEADER>Welcome to my XML book</HEADER>
+        <CHAPTER>
+            <CHAPTER_NUMBER>Chapter 1</CHAPTER_NUMBER>
+            <CHAPTER_TEXT>
+                <p>Let&apos;s start talking about XML</p>
+                <p>Hope you will enjoy this new language</p>
+                <p>As you’ll see, it&apos;s far from difficult to learn</p>
+            </CHAPTER_TEXT>
+        </CHAPTER>
+    </PART>
+</BOOK>

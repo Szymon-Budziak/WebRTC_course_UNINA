@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="simpleCSS.css"?>
+<!-- This is just a comment -->
+<!DOCTYPE DOCUMENT [
+        <!ELEMENT DOCUMENT (GREETING, MESSAGE)>
+        <!ELEMENT GREETING (#PCDATA)>
+        <!ELEMENT MESSAGE (#PCDATA)>
+        ]>
+
+<DOCUMENT>
+    <GREETING>
+        HELLO TO EVERYBODY!
+    </GREETING>
+    <MESSAGE>
+        This is a very simple XML page.
+    </MESSAGE>
+</DOCUMENT>

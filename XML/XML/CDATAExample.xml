@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOCUMENT>
+    <MARKUP>
+        <![CDATA[
+        Here I can write whatever I like. No need to
+        use entity references like &lt; to indicate <
+        or &amp; to indicate &
+        ]]>
+    </MARKUP>
+</DOCUMENT>

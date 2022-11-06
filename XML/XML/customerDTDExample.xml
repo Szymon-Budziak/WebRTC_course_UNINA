@@ -1,0 +1,64 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE DOCUMENT [
+        <!ELEMENT DOCUMENT (CUSTOMER)*>
+        <!ELEMENT CUSTOMER (NAME, DATE, ORDERS)>
+        <!ELEMENT NAME (LAST_NAME, FIRST_NAME)>
+        <!ELEMENT LAST_NAME (#PCDATA)>
+        <!ELEMENT FIRST_NAME (#PCDATA)>
+        <!ELEMENT DATE (#PCDATA)>
+        <!ELEMENT ORDERS (ITEM)*>
+        <!ELEMENT ITEM (PRODUCT, NUMBER, (PRICE | CHARGEACCT | SAMPLE))>
+        <!ELEMENT PRODUCT (#PCDATA | PRODUCT_ID)*>
+        <!ELEMENT PRODUCT_ID (#PCDATA)>
+        <!ELEMENT NUMBER (#PCDATA)>
+        <!ELEMENT PRICE (#PCDATA)>
+        <!ELEMENT CHARGEACCT (#PCDATA)>
+        <!ELEMENT SAMPLE (#PCDATA)>
+        ]>
+<DOCUMENT>
+    <CUSTOMER>
+        <NAME>
+            <LAST_NAME>Budziak</LAST_NAME>
+            <FIRST_NAME>Szymon</FIRST_NAME>
+        </NAME>
+        <DATE>November 6, 2022</DATE>
+        <ORDERS>
+            <ITEM>
+                <PRODUCT>Tomatoes</PRODUCT>
+                <NUMBER>8</NUMBER>
+                <PRICE>1€</PRICE>
+            </ITEM>
+            <ITEM>
+                <PRODUCT>
+                    <PRODUCT_ID>123456</PRODUCT_ID>
+                </PRODUCT>
+                <NUMBER>2</NUMBER>
+                <PRICE>2000€</PRICE>
+            </ITEM>
+            <ITEM>
+                <PRODUCT>Oranges</PRODUCT>
+                <NUMBER>15</NUMBER>
+                <SAMPLE>No charge</SAMPLE>
+            </ITEM>
+            <ITEM>
+                <PRODUCT>Bread</PRODUCT>
+                <NUMBER>1</NUMBER>
+                <CHARGEACCT>2293</CHARGEACCT>
+            </ITEM>
+        </ORDERS>
+    </CUSTOMER>
+    <CUSTOMER>
+        <NAME>
+            <LAST_NAME>Smith</LAST_NAME>
+            <FIRST_NAME>John</FIRST_NAME>
+        </NAME>
+        <DATE>October 10, 2021</DATE>
+        <ORDERS>
+            <ITEM>
+                <PRODUCT>Bread</PRODUCT>
+                <NUMBER>1</NUMBER>
+                <PRICE>1€</PRICE>
+            </ITEM>
+        </ORDERS>
+    </CUSTOMER>
+</DOCUMENT>

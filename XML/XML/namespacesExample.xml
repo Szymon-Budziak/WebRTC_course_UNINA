@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<book:library
+        xmlns:book="http://www.mybooks.com/spec"
+        xmlns:szymon="https://www.goodreads.com/">
+    <book:book book:ID="ISBN-0-7357-1020-1">
+        <book:title>
+            Inside XML
+        </book:title>
+        <szymon:review szymon:ID="rev-4-2001">
+            <!-- local namespace, but the line 4 must be deleted
+            xmlns:szymon="https://www.goodreads.com/">
+            -->
+            A beautiful book. Plenty of interesting things about XML!
+        </szymon:review>
+    </book:book>
+</book:library>

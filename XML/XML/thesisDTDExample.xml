@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE THESIS[
+        <!ELEMENT THESIS (P*)>
+        <!ELEMENT P (#PCDATA)>
+        ]>
+<THESIS>
+    <P>
+        This is my Ph.D. Thesis Intro.
+    </P>
+    <P>
+        This is a chapter.
+    </P>
+    <P>
+        Here are conclusions and future work.
+    </P>
+</THESIS>

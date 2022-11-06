@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE DOCUMENT SYSTEM "order.dtd">
+<DOCUMENT>
+    <CUSTOMER>
+        <NAME>
+            <LAST_NAME>Budziak</LAST_NAME>
+            <FIRST_NAME>Szymon</FIRST_NAME>
+        </NAME>
+        <DATE>November 18, 2022</DATE>
+        <ORDERS>
+            <ITEM>
+                <PRODUCT>Tomatoes</PRODUCT>
+                <NUMBER>8</NUMBER>
+                <PRICE>1000€</PRICE>
+            </ITEM>
+        </ORDERS>
+    </CUSTOMER>
+</DOCUMENT>

@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<DOCUMENT>
+    <CUSTOMER STATUS="Lousy Credit">
+        <NAME>
+            <LAST_NAME>Budziak</LAST_NAME>
+            <FIRST_NAME>Szymon</FIRST_NAME>
+        </NAME>
+    </CUSTOMER>
+    <CUSTOMER STATUS="Good Credit">
+        <NAME>
+            <LAST_NAME>Smith</LAST_NAME>
+            <FIRST_NAME>John</FIRST_NAME>
+        </NAME>
+    </CUSTOMER>
+</DOCUMENT>

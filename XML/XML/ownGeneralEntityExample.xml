@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE INVOICE [
+        <!ELEMENT INVOICE (CUSTOMER,PRICE,DATE)*>
+        <!ELEMENT CUSTOMER (FIRST_NAME,LAST_NAME)>
+        <!ELEMENT FIRST_NAME (#PCDATA)>
+        <!ELEMENT LAST_NAME (#PCDATA)>
+        <!ELEMENT PRICE (#PCDATA)>
+        <!ELEMENT DATE (#PCDATA)>
+        <!-- internal -->
+        <!--    <!ENTITY TODAY "October 26, 2021">-->
+        <!-- private external -->
+        <!ENTITY TODAY SYSTEM "date.xml">
+        ]>
+<INVOICE>
+    <CUSTOMER>
+        <FIRST_NAME>Simon Pietro</FIRST_NAME>
+        <LAST_NAME>Romano</LAST_NAME>
+    </CUSTOMER>
+    <PRICE>1000</PRICE>
+    <DATE>&TODAY;</DATE>
+</INVOICE>
