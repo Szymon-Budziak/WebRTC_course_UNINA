@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="transaction" type="transactionType"/>
+    <xs:complexType name="transactionType">
+        <xs:sequence>
+            <xs:element name="Lender" type="address"/>
+            <xs:element name="Borrower" type="address"/>
+            <xs:element ref="note" minOccurs="0"/>
+            <xs:element name="books" type="books"/>
+        </xs:sequence>
+        <xs:attribute name="borrowDate" type="xs:date"/>
+    </xs:complexType>
+    <xs:element name="note" type="xs:string"/>
+    <xs:complexType name="address">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="street" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="state" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="phone" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="books">
+        <xs:sequence>
+            <xs:element name="book" minOccurs="0" maxOccurs="10">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="bookTitle" type="xs:string"/>
+                        <xs:element name="pubDate" type="xs:date" minOccurs="0"/>
+                        <xs:element name="replacementValue" type="xs:decimal"/>
+                        <xs:element name="maxDaysOut">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                    <xs:maxExclusive value="14"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="bookID" type="catalogID"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="catalogID">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{3}-\d{4}-\d{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

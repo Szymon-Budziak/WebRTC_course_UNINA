@@ -1,0 +1,38 @@
+<?xml version="1.0" endocing="UTF-8"?>
+<transaction>
+    <Lender phone="+48-123-456-789">
+        <name>Szymon Budziak</name>
+        <street>Kawiory 21</street>
+        <city>Krakow</city>
+        <state>Poland</state>
+    </Lender>
+    <Borrower phone="+39-081-1234567">
+        <name>Pippozzo</name>
+        <street>Via Plutozzo 29</street>
+        <city>Rome</city>
+        <state>Italy</state>
+    </Borrower>
+    <note>
+        Lender wants books back in two weeks!
+    </note>
+    <books>
+        <book bookID="123-4567-890">
+            <bookTitle>Inside XML</bookTitle>
+            <pubDate>1998-08-13</pubDate>
+            <replacementValue>50</replacementValue>
+            <maxDaysOut>13</maxDaysOut>
+        </book>
+        <book bookID="145-5638-470">
+            <bookTitle>Computer Networks</bookTitle>
+            <pubDate>1996-08-16</pubDate>
+            <replacementValue>39</replacementValue>
+            <maxDaysOut>4</maxDaysOut>
+        </book>
+        <book bookID="246-9876-232">
+            <bookTitle>Pippozzo forever</bookTitle>
+            <pubDate>1967-02-14</pubDate>
+            <replacementValue>250</replacementValue>
+            <maxDaysOut>0</maxDaysOut>
+        </book>
+    </books>
+</transaction>

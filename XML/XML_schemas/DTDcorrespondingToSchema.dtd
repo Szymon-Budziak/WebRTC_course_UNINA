@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!ELEMENT note (#PCDATA)>
+        <!ELEMENT transaction (Lender, Borrower, note?, books)>
+        <!ATTLIST transaction borrowDate CDATA #IMPLIED>
+        <!ELEMENT Lender (name, street, city, state>
+        <!ATTLIST Lender phone CDATA #IMPLIED>
+        <!ELEMENT Borrower (name, street, city, state)>
+        <!ATTLIST Borrower phone CDATA #IMPLIED>
+        <!ELEMENT books (book *)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT street (#PCDATA)>
+        <!ELEMENT city (#PCDATA)>
+        <!ELEMENT state (#PCDATA)>
+        <!ELEMENT book (bookTitle, pubDate?, replacementValue, maxDaysOut)>
+        <!ATTLIST book bookID CDATA #IMPLIED>
+        <!ELEMENT bookTitle (#PCDATA)>
+        <!ELEMENT pubDate (#PCDATA)>
+        <!ELEMENT replacementValue (#PCDATA)>
+        <!ELEMENT maxDaysOut (#PCDATA)>
