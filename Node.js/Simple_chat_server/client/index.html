@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple chat server</title>
+    <style>
+        body {
+            background-color: #FFFACD;
+        }
+
+        button {
+            background-color: #DAA520;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #chatMessage {
+            width: calc(100% - 20px);
+            margin: auto;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+<h1 style="color: #5e9ca0; text-align: center;"><strong>Set up a signaling service to exchange messages </strong></h1>
+
+<div id="scratchPad"></div>
+
+<div id="container">
+    <input type="text" id="chatMessage" name="chat-message">
+    <button onClick="sendMessage()">Send</button>
+    <button onClick="window.location.reload();">Reload page</button>
+</div>
+
+<script src='/socket.io/socket.io.js'></script>
+<script src="js/chatClient.js"></script>
+</body>
+</html>
