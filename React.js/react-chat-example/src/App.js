@@ -1,7 +1,7 @@
-import Header from "./Header";
-import Chat from "./Chat";
-import Footer from "./Footer";
-import {Toaster} from "react-hot-toast";
+import Header from './Header';
+import Chat from './Chat';
+import Footer from './Footer';
+import {Toaster} from 'react-hot-toast';
 
 const App = () => {
     return (<>
