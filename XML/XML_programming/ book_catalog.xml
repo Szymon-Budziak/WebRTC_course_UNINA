@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="bookcatalog.xsl"?>
+<BookCatalog>
+    <Book language="English">
+        <Author>Antwone Quenton Fisher</Author>
+        <Title>Who Will Cry for the Little Boy</Title>
+        <Editor>Hardcover</Editor>
+        <Price currency="euro">9.95</Price>
+    </Book>
+    <Book language="English">
+        <Author>Kahlil Gibran</Author>
+        <Title>The Prophet</Title>
+        <Editor>Hardcover</Editor>
+        <Price currency="euro">10.50</Price>
+    </Book>
+</BookCatalog>
